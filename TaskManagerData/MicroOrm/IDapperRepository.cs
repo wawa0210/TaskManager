@@ -5,6 +5,7 @@ using IDbConnection = System.Data.Common.DbConnection;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using TaskManagerData.MicroOrm.Enums;
@@ -105,5 +106,9 @@ namespace TaskManagerData.MicroOrm
 
         Task<IEnumerable<TEntity>> FindAllBetweenAsync(DateTime from, DateTime to,
             Expression<Func<TEntity, object>> btwField, Expression<Func<TEntity, bool>> expression);
+
+        //IEnumerable<T> GetPage<T>(object predicate, IList<ISort> sort, int page, int resultsPerPage, DbTransaction transaction, int? commandTimeout = null, bool buffered = true) where T : class;
+        //IEnumerable<T> GetPage<T>(object predicate, IList<ISort> sort, int page, int resultsPerPage, int? commandTimeout = null, bool buffered = true) where T : class;
+
     }
 }

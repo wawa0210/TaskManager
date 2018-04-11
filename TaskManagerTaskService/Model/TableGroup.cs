@@ -38,6 +38,8 @@ namespace TaskManagerTaskService.Model
         [Column("CreateAt")]
         [Description("创建时间")]
         public DateTime CreateAt { get; set; }
+
+
         /// <summary>
         /// 备注
         /// </summary>
