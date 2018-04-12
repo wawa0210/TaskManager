@@ -7,7 +7,7 @@ namespace TaskManagerTaskService.Enum
     /// <summary>
     /// 分组状态
     /// </summary>
-    public enum EnumGroupStatus : int
+    public enum EnumStatus : int
     {
         Enable = 1,
 

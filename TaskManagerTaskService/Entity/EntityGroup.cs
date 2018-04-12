@@ -12,7 +12,7 @@ namespace TaskManagerTaskService.Entity
         {
             CreateAt = DateTime.Now;
             Remark = "";
-            GroupStatus = EnumGroupStatus.Enable;
+            Status = EnumStatus.Enable;
         }
         public long Id { get; set; }
 
@@ -21,7 +21,7 @@ namespace TaskManagerTaskService.Entity
         public DateTime CreateAt { get; set; }
         public string Remark { get; set; }
 
-        public EnumGroupStatus GroupStatus { get; set; }
+        public EnumStatus Status { get; set; }
 
     }
 }

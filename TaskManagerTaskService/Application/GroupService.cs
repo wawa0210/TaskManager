@@ -15,17 +15,17 @@ namespace TaskManagerTaskService.Application
     {
         public async Task<EntityGroup> AddGroupAsync(EntityGroup entityGroup)
         {
-            var newsRep = GetRepositoryInstance<TableGroup>();
-            var checkResult = await newsRep.FindAsync(x => x.Name == entityGroup.Name);
+            var groupRep = GetRepositoryInstance<TableGroup>();
+            var checkResult = await groupRep.FindAsync(x => x.Name == entityGroup.Name);
             if (checkResult != null) throw new ArgumentException("该分组已存在，不能重复添加");
             var model = new TableGroup
             {
                 Name = entityGroup.Name,
                 Remark = entityGroup.Remark,
                 CreateAt = entityGroup.CreateAt,
-                Status = (int)entityGroup.GroupStatus
+                Status = (int)entityGroup.Status
             };
-            var result = await newsRep.InsertAsync(model);
+            var result = await groupRep.InsertAsync(model);
             if (!result) throw new ArgumentException("新增失败");
             entityGroup.Id = model.Id;
             return entityGroup;
@@ -33,14 +33,14 @@ namespace TaskManagerTaskService.Application
 
         public async Task<bool> DisableGroupAsync(long id)
         {
-            var newsRep = GetRepositoryInstance<TableGroup>();
+            var groupRep = GetRepositoryInstance<TableGroup>();
 
             var model = await GetGroupByIdAsync(id);
-            model.Status = (int)EnumGroupStatus.Disable;
+            model.Status = (int)EnumStatus.Disable;
 
             //todo: 同时禁用对应组别的所有任务
 
-            return newsRep.Update<TableGroup>(model, item => new
+            return groupRep.Update<TableGroup>(model, item => new
             {
                 item.Status
             });
@@ -49,17 +49,17 @@ namespace TaskManagerTaskService.Application
         private async Task<TableGroup> GetGroupByIdAsync(long id)
         {
             if (id <= 0) throw new ArgumentException("参数不合法");
-            var newsRep = GetRepositoryInstance<TableGroup>();
+            var groupRep = GetRepositoryInstance<TableGroup>();
 
-            var model = await newsRep.FindAsync(x => x.Id == id);
+            var model = await groupRep.FindAsync(x => x.Id == id);
             if (model == null) throw new ArgumentException("id错误");
             return model;
         }
 
         public async Task<EntityGroup> GetGroupAsync(long id)
         {
-            var newsRep = GetRepositoryInstance<TableGroup>();
-            var result = await newsRep.FindAsync(x => x.Id == id);
+            var groupRep = GetRepositoryInstance<TableGroup>();
+            var result = await groupRep.FindAsync(x => x.Id == id);
             return result.MapTo<EntityGroup>();
 
         }
@@ -74,8 +74,8 @@ namespace TaskManagerTaskService.Application
             var model = await GetGroupByIdAsync(entityGroup.Id);
             model.Name = entityGroup.Name;
             model.Remark = entityGroup.Remark;
-            var newsRep = GetRepositoryInstance<TableGroup>();
-            newsRep.Update(model);
+            var groupRep = GetRepositoryInstance<TableGroup>();
+            groupRep.Update(model);
             return entityGroup;
         }
     }
