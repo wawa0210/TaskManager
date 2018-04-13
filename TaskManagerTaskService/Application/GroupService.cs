@@ -18,13 +18,7 @@ namespace TaskManagerTaskService.Application
             var groupRep = GetRepositoryInstance<TableGroup>();
             var checkResult = await groupRep.FindAsync(x => x.Name == entityGroup.Name);
             if (checkResult != null) throw new ArgumentException("该分组已存在，不能重复添加");
-            var model = new TableGroup
-            {
-                Name = entityGroup.Name,
-                Remark = entityGroup.Remark,
-                CreateAt = entityGroup.CreateAt,
-                Status = (int)entityGroup.Status
-            };
+            var model = entityGroup.MapTo<TableGroup>();
             var result = await groupRep.InsertAsync(model);
             if (!result) throw new ArgumentException("新增失败");
             entityGroup.Id = model.Id;
@@ -60,8 +54,8 @@ namespace TaskManagerTaskService.Application
         {
             var groupRep = GetRepositoryInstance<TableGroup>();
             var result = await groupRep.FindAsync(x => x.Id == id);
-            return result.MapTo<EntityGroup>();
 
+            return result?.MapTo<EntityGroup>();
         }
 
         public async Task<PageBase<EntityGroup>> GetPageGroupAsync()

@@ -20,7 +20,7 @@ namespace TaskManagerTaskService.Application
             var checkResult = await taskRep.FindAsync(x => x.Name == entityTask.Name);
             if (checkResult != null) throw new ArgumentException("该任务已存在，不能重复添加");
 
-            var groupInfo = GroupService.GetGroupAsync(entityTask.GroupId);
+            var groupInfo = await GroupService.GetGroupAsync(entityTask.GroupId);
             if (groupInfo == null) throw new ArgumentException("该任务所属类别不存在");
 
             var model = entityTask.MapTo<TableTask>();

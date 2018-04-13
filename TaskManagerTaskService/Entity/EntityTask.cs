@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using CommonLib.Extensions;
 using TaskManagerTaskService.Enum;
 
 namespace TaskManagerTaskService.Entity
@@ -10,10 +11,12 @@ namespace TaskManagerTaskService.Entity
     {
         public EntityTask()
         {
-            CreateAt=DateTime.Now;
+            Id = GuidExtens.GuidToLongId();
+            CreateAt = DateTime.Now;
             RequestJson = "";
             Remark = "";
             Desc = "";
+            TaskStatus = EnumStatus.Enable;
         }
 
         /// <summary>
@@ -95,6 +98,6 @@ namespace TaskManagerTaskService.Entity
         public string CronExpress { get; set; }
 
 
-        public EnumStatus TasStatus { get; set; }
+        public EnumStatus TaskStatus { get; set; }
     }
 }

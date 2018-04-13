@@ -11,34 +11,36 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
-    [Route("v0/tasks")]
-    public class TasksController : BaseApiController
+    [Route("v0/groups")]
+    public class GroupController : BaseApiController
     {
-        public ITaskService TaskService { get; set; }
+        public IGroupService GroupService { get; set; }
+
 
         /// <summary>
-        /// 获得任务详情
+        /// 获得分组详情
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("{taskId}")]
-        public async Task<ResponseModel> GetTaskbyIdAsync(long taskId)
+        [Route("{groupId}")]
+        public async Task<ResponseModel> GetGroupbyIdAsync(long groupId)
         {
-            if (taskId<=0) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+            if (groupId <= 0) return Fail(ErrorCodeEnum.ParamIsNullArgument);
 
-            return Success(await TaskService.GetTaskAsync(taskId));
+            return Success(await GroupService.GetGroupAsync(groupId));
         }
 
         /// <summary>
-        /// 添加任务信息
+        /// 添分组信息
         /// </summary>
         /// <returns></returns>
         [HttpPost]
         [Route("")]
-        public async Task<ResponseModel> AddTaskAsync([FromBody]EntityTask entityTask)
+        public async Task<ResponseModel> AddGrooupAsync([FromBody]EntityGroup entityGroup)
         {
-            var result = await TaskService.AddTaskAsync(entityTask);
+            var result = await GroupService.AddGroupAsync(entityGroup);
             return Success(result);
         }
+
     }
 }

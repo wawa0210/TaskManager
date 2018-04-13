@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using CommonLib.Extensions;
 using TaskManagerTaskService.Enum;
 
 namespace TaskManagerTaskService.Entity
@@ -10,6 +11,7 @@ namespace TaskManagerTaskService.Entity
     {
         public EntityGroup()
         {
+            Id = GuidExtens.GuidToLongId();
             CreateAt = DateTime.Now;
             Remark = "";
             Status = EnumStatus.Enable;
