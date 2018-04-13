@@ -94,7 +94,10 @@ namespace WebApi.Filter
             else
             {
                 response.ContentType = "application/json";
-                await response.WriteAsync(objMsg);
+                await response.WriteAsync(JsonConvert.SerializeObject(new
+                {
+                    ErrorMsg = objMsg
+                }));
             }
 
         }
