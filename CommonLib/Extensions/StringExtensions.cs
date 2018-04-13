@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Quartz;
 
 namespace CommonLib.Extensions
 {
@@ -17,6 +18,18 @@ namespace CommonLib.Extensions
         public static T JsonToObj<T>(this string json)
         {
             return string.IsNullOrWhiteSpace(json) ? default(T) : JsonConvert.DeserializeObject<T>(json);
+        }
+
+        /// <summary>
+        /// 校验字符串是否是合法cron表达式
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsValidateCronExpress(this string str)
+        {
+            if (string.IsNullOrEmpty(str)) return false;
+
+            return CronExpression.IsValidExpression(str);
         }
     }
 }

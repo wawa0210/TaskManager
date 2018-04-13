@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CommonLib.Extensions;
 using TaskManagerBaseService;
 using TaskManagerEntity.PageQuery;
 using TaskManagerTaskService.Entity;
@@ -16,6 +17,8 @@ namespace TaskManagerTaskService.Application
 
         public async Task<EntityTask> AddTaskAsync(EntityTask entityTask)
         {
+            if(!entityTask.CronExpress.IsValidateCronExpress()) throw new ArgumentException("Cron表达式不正确");
+
             var taskRep = GetRepositoryInstance<TableTask>();
             var checkResult = await taskRep.FindAsync(x => x.Name == entityTask.Name);
             if (checkResult != null) throw new ArgumentException("该任务已存在，不能重复添加");
