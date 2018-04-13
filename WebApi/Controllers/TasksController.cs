@@ -30,6 +30,19 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
+        /// 分页获得任务信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("pages")]
+        public async Task<ResponseModel> GetPageTaskAsync([FromQuery]EntityTaskQuery entityPageQuery)
+        {
+            var result = await TaskService.GetPageTaskAsync(entityPageQuery);
+
+            return Success(result);
+        }
+
+        /// <summary>
         /// 添加任务信息
         /// </summary>
         /// <returns></returns>
@@ -38,6 +51,19 @@ namespace WebApi.Controllers
         public async Task<ResponseModel> AddTaskAsync([FromBody]EntityTask entityTask)
         {
             var result = await TaskService.AddTaskAsync(entityTask);
+            return Success(result);
+        }
+
+        /// <summary>
+        /// 编辑任务信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("")]
+        public async Task<ResponseModel> EditTaskAsync([FromBody]EntityTask entityTask)
+        {
+            if (entityTask.Id <= 0) return Fail(ErrorCodeEnum.ParamIsNullArgument);
+            var result = await TaskService.EditTaskAsync(entityTask);
             return Success(result);
         }
     }
