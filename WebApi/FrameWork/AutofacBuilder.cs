@@ -37,15 +37,15 @@ namespace WebApi.FrameWork
         private static void SetupResolveRules(ContainerBuilder builder)
         {
             //跨程序集注册
-            var descriptorsAccounts = Assembly.Load("EmergencyAccount");
+            var descriptorsAccounts = Assembly.Load("TaskManagerTaskService");
             builder.RegisterAssemblyTypes(descriptorsAccounts)
                 .Where(t => t.Name.EndsWith("Service") && !t.IsAbstract)
                 .AsImplementedInterfaces().InstancePerLifetimeScope().PropertiesAutowired();
 
-            var descriptorsPaperNews = Assembly.Load("PaperNewsService");
-            builder.RegisterAssemblyTypes(descriptorsPaperNews)
-                .Where(t => t.Name.EndsWith("Service") && !t.IsAbstract)
-                .AsImplementedInterfaces().InstancePerLifetimeScope().PropertiesAutowired();
+            //var descriptorsPaperNews = Assembly.Load("PaperNewsService");
+            //builder.RegisterAssemblyTypes(descriptorsPaperNews)
+            //    .Where(t => t.Name.EndsWith("Service") && !t.IsAbstract)
+            //    .AsImplementedInterfaces().InstancePerLifetimeScope().PropertiesAutowired();
         }
 
 

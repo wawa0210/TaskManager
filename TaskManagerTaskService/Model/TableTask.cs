@@ -96,9 +96,9 @@ namespace TaskManagerTaskService.Model
         /// <summary>
         /// Desc
         /// </summary>
-        [Column("Desc")]
+        [Column("Description")]
         [Description("Desc")]
-        public string Desc { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// CronExpress

@@ -11,6 +11,9 @@ namespace TaskManagerTaskService.Entity
         public EntityTask()
         {
             CreateAt=DateTime.Now;
+            RequestJson = "";
+            Remark = "";
+            Desc = "";
         }
 
         /// <summary>

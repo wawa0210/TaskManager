@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Log\" />
     <Folder Include="wwwroot\" />
     <Folder Include="Imgs\" />
@@ -34,6 +33,7 @@
   <ItemGroup>
       <ProjectReference Include="..\TaskManagerEntity\TaskManagerEntity.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="..\TaskManagerTaskService\TaskManagerTaskService.csproj" />
     </ItemGroup>
 
   <ItemGroup>

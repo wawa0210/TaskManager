@@ -12,12 +12,21 @@ namespace TaskManagerTaskService.Application
 {
     public class TaskService : BaseAppService, ITaskService
     {
+        public IGroupService GroupService { get; set; }
+
         public async Task<EntityTask> AddTaskAsync(EntityTask entityTask)
         {
             var taskRep = GetRepositoryInstance<TableTask>();
             var checkResult = await taskRep.FindAsync(x => x.Name == entityTask.Name);
             if (checkResult != null) throw new ArgumentException("该任务已存在，不能重复添加");
 
+            var groupInfo = GroupService.GetGroupAsync(entityTask.GroupId);
+            if (groupInfo == null) throw new ArgumentException("该任务所属类别不存在");
+
+            var model = entityTask.MapTo<TableTask>();
+            var result = await taskRep.InsertAsync(model);
+            if (!result) throw new ArgumentException("任务新增失败");
+            entityTask.Id = model.Id;
             return entityTask;
         }
 

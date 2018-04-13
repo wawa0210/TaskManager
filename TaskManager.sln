@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerTaskService", "T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackService", "BackService", "{545776BB-4745-4E9B-AD60-8C3031BE27C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskService", "TaskService\TaskService.csproj", "{3E1523D9-8C32-4354-AAEB-B7C893D87CBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskService", "TaskService\TaskService.csproj", "{3E1523D9-8C32-4354-AAEB-B7C893D87CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskServiceCore", "TaskServiceCore\TaskServiceCore.csproj", "{D440D53E-4506-4B3D-8FC2-2A25A75F2451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskServiceCore", "TaskServiceCore\TaskServiceCore.csproj", "{D440D53E-4506-4B3D-8FC2-2A25A75F2451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{2C9B9539-EE34-4FE8-8340-27F15E20F371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{2C9B9539-EE34-4FE8-8340-27F15E20F371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationCenter", "ConfigurationCenter\ConfigurationCenter.csproj", "{3CDB05C8-1F1B-4D06-89C9-AF2FDD5C1D2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{2C9B9539-EE34-4FE8-8340-27F15E20F371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C9B9539-EE34-4FE8-8340-27F15E20F371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C9B9539-EE34-4FE8-8340-27F15E20F371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CDB05C8-1F1B-4D06-89C9-AF2FDD5C1D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CDB05C8-1F1B-4D06-89C9-AF2FDD5C1D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CDB05C8-1F1B-4D06-89C9-AF2FDD5C1D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CDB05C8-1F1B-4D06-89C9-AF2FDD5C1D2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +104,7 @@ Global
 		{F0E2DE4A-95CE-414D-A12F-F0AE3915CE37} = {999955F4-6DA5-4E1B-8D98-6AB577856018}
 		{3E1523D9-8C32-4354-AAEB-B7C893D87CBC} = {545776BB-4745-4E9B-AD60-8C3031BE27C3}
 		{D440D53E-4506-4B3D-8FC2-2A25A75F2451} = {545776BB-4745-4E9B-AD60-8C3031BE27C3}
+		{3CDB05C8-1F1B-4D06-89C9-AF2FDD5C1D2D} = {4A512D81-FD00-43F4-8024-9A367167D5C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC1AB2E6-7CD4-4168-85E9-7E26C6A20D3C}
